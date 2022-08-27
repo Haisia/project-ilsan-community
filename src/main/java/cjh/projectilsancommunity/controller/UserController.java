@@ -23,12 +23,26 @@ public class UserController {
     }
 
     // 회원가입 페이지에서 정보를 입력 후, "회원가입" 버튼을 클릭 시,
-    // 회원등록이 되고, (  )페이지로 이동합니다.
+    // 중복 ID를 체크 후, 알맞는 페이지로 이동합니다.
     @PostMapping("/user/signup")
     public String userSignUp(@ModelAttribute User user){
-        userService.saveUser(user);
+        if(userService.saveUser(user))
+            return "redirect:/userSignUpSuccess";   // 회원가입 성공 페이지
+        else{
+            return "redirect:/userSignUpFail";    // 회원가입 실패 페이지
+        }
+    }
 
-        return "redirect:/";
+    // 회원가입 성공 페이지
+    @GetMapping("/userSignUpSuccess")
+    public String userSignUpSuccess(){
+        return "userSignUpSuccess";
+    }
+
+    // 회원가입 실패 페이지
+    @GetMapping("/userSignUpFail")
+    public String userSignUpFail(){
+        return "userSignUpFail";
     }
 
 
