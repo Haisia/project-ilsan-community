@@ -1,8 +1,11 @@
-package cjh.projectilsancommunity;
+package cjh.projectilsancommunity.domain;
+
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.Objects;
 
+@Component
 public class User {
     private int pk;
     private String id;

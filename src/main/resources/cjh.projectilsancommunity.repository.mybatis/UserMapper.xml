@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cjh.projectilsancommunity.repository.mybatis.UserMapper">
+
+<!--void saveUser(User user);-->
+    <insert id="saveUser" useGeneratedKeys="true" keyProperty="pk">
+        insert into user_info (id, pwd, name, email, birth, sns, reg_date)
+        values (#{id}, #{pwd}, #{name},#{email},
+                #{birth},#{sns},now())
+    </insert>
+
+<!--void deleteUser(String id);-->
+    <delete id="deleteUser">
+        delete from user_info where id=#{id}
+    </delete>
+
+<!--void deleteAll();-->
+    <delete id="deleteAll">
+        delete from user_info
+    </delete>
+
+<!--void updateUser(User user);-->
+    <update id="updateUser">
+        update user_info set
+            pwd=#{pwd}, name=#{name}, email=#{mail},
+            birth=#{birth}, sns=#{sns}, reg_date=#{reg_date}
+            where id=#{id}
+    </update>
+
+<!-- application.properties 에
+mybatis.type-aliases-package=cjh.projectilsancommunity.domain
+를 명시 해 주었기 때문에 패키지명 생략하고 User 만 적어도 사용가능-->
+<!--Optional<User> selectUser(String id);-->
+    <select id="selectUser" resultType="User">
+        select * from user_info where id=#{id}
+    </select>
+
+</mapper>
