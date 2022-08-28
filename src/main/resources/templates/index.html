@@ -20,7 +20,7 @@
     <a th:if="${session.id==null}" href="/login">로그인</a>
     <a th:if="${session.id==null}" href="/user/signup">회원가입</a>
     <a th:if="${session.id!=null}" href="/logout">로그아웃</a>
-    <a href="/board/join">가입인사</a>
+    <a href="/board/welcome">가입인사</a>
     <a href="#about">테스트2</a>
     <a href="#about">테스트3</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -32,6 +32,7 @@
 
 <h1>
     <span th:if="${session.name!=null}" th:text="${session.name}"></span>
+    <span th:if="${session.name!=null}">님 </span>
     일산에 오신걸 환영합니다.
 </h1>
 

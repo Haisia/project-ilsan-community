@@ -10,6 +10,11 @@ import org.springframework.stereotype.Service;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+/**
+ * User 도매인과 관련된 서비스를
+ * 재공해 주는 클래스
+ */
+
 @Service
 @RequiredArgsConstructor
 public class UserService {

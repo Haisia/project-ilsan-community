@@ -10,11 +10,15 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+/**
+ * User 도매인과 관련된 데이터베이스를
+ * 접근하기 위한 클래스
+ */
+
+
 @Repository
 @RequiredArgsConstructor
 public class UserRepository {
-    @Autowired
-    private SqlSession session;
     private final UserMapper userMapper;
 
     public User saveUser(User user) {

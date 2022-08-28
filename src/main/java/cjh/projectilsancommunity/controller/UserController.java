@@ -13,8 +13,12 @@ import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.Optional;
 
+/**
+ * User 도매인의 기능을
+ * 사용자가 사용할 수 있도록 도와주는 클래스
+ */
+
 @Controller
-//@RestController
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
@@ -80,7 +84,7 @@ public class UserController {
     @GetMapping("/logout")
     public String userLogout(HttpServletRequest request) {
         if (loginCheck(request)) {
-            System.out.println("로그아웃을 합니다.");
+            System.out.println("로그아웃을 합니다 / id : " + request.getSession().getAttribute("id"));
             request.getSession().invalidate();
         } else {
             System.out.println("로그인을 먼저 해주세요");
