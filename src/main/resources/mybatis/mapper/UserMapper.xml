@@ -36,4 +36,9 @@ mybatis.type-aliases-package=cjh.projectilsancommunity.domain
         select * from user_info where id=#{id}
     </select>
 
+<!--로그인-->
+    <select id="loginUser" resultType="User">
+        select * from user_info where id=#{id} and pwd=#{pwd}
+    </select>
+
 </mapper>

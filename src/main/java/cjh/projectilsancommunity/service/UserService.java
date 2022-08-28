@@ -29,4 +29,15 @@ public class UserService {
             return true;
         }
     }
+
+    // ID 와 PWD 가 일치하는 유저가 존재하면 로그인
+    public User loginUser(String id, String pwd){
+        Optional<User> tryLogin = userRepository.loginUser(id, pwd);
+        try{
+            return tryLogin.get();
+        }catch(NoSuchElementException e){
+            return null;
+        }
+    }
+
 }
