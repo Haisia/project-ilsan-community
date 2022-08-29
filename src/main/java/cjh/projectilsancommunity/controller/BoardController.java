@@ -18,9 +18,9 @@ public class BoardController {
 //    private final BoardRepository boardRepository;
     private final BoardService boardService;
 
-
+    // 가입인사 게시판, 게시글 매핑
     @GetMapping("/board/welcome")
-    public String boardWelcomeList(Model m, Integer bno){
+    public String boardWelcome(Model m, Integer bno){
         if(bno==null) {
             List<Board> boardList = boardService.articlesList();
             m.addAttribute(boardList);
@@ -33,5 +33,11 @@ public class BoardController {
             m.addAttribute("article",article);
             return "board/welcomeArticle";
         }
+    }
+
+    @GetMapping("/board/welcome/write")
+    public String boardWelcomeWrite(){
+        System.out.println("test");
+        return "board/welcomeWrite";
     }
 }

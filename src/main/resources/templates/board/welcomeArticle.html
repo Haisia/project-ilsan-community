@@ -12,7 +12,7 @@
 <div style="background-color: beige; margin: 0 200px">
     <div style="background-color: dodgerblue; height: 2px; margin: 0"></div>
     <h4 style="margin: 0" th:text="${article.getTitle}"></h4>
-    <span style="margin: 0" th:text="${article.getWriter}"></span>
+    <span style="margin: 0" th:text="${article.getWriter}+' | '+${article.getWriteDate()}"></span>
     <div style="background-color: grey; height: 1px; margin: 0"></div>
 </div>
 <div style="background-color: #f1f1f1; margin: 0 200px">

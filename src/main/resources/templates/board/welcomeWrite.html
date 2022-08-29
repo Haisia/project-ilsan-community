@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>가입인사 게시판 - 글쓰기</title>
+</head>
+<body>
+<h2 style="margin: 20px 200px">가입인사 게시판</h2>
+
+
+<!--<div style="background-color: beige; margin: 0 200px">-->
+<!--    <div style="background-color: dodgerblue; height: 2px; margin: 0"></div>-->
+<!--    <div style="background-color: grey; height: 1px; margin: 0"></div>-->
+<!--</div>-->
+
+<!--<div style="background-color: #f1f1f1; margin: 0 200px">-->
+<!--    <br>-->
+<!--    <span th:text="${article.getContent}"></span>-->
+<!--</div>-->
+
+
+<form action="" id="form" style="margin: 0 200px">
+    <div style="background-color: dodgerblue; height: 2px; margin: 0"></div>
+    <div style="background-color: grey; height: 1px; margin: 0"></div>
+    <input type="text" name="title" style="margin:10px 0;width: 70%; height: 30px; font-size: 20px"><br>
+    <textarea name="content" id="" cols="30" rows="40" style="margin:10px 0;width: 100%; font-size: 20px"></textarea>
+    <div style="text-align: right;">
+        <button type="button" id="listBtn" class="btn"
+                style="
+                width: 60px;
+                height: 40px;
+                background-color: grey;
+                font-weight: bold;
+                font-size: 15px;
+                color: white">취소
+        </button>
+        <button type="button" id="writeBtn" class="btn"
+                style="
+                width: 60px;
+                height: 40px;
+                background-color: darkblue;
+                font-weight: bold;
+                font-size: 15px;
+                color: white">등록</button>
+    </div>
+</form>
+
+</body>
+</html>
