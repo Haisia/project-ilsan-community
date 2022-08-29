@@ -1,7 +1,6 @@
 package cjh.projectilsancommunity.controller;
 
 import cjh.projectilsancommunity.domain.Board;
-import cjh.projectilsancommunity.repository.BoardRepository;
 import cjh.projectilsancommunity.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -13,27 +12,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
-public class BoardController {
+public class welcomeBoardController {
 
 //    private final BoardRepository boardRepository;
     private final BoardService boardService;
+    private String boardName = "board_welcome";
 
     // 가입인사 게시판, 게시글 읽기 매핑
     @GetMapping("/board/welcome")
     public String boardWelcome(Model m, Integer bno){
         if(bno==null) {
-            List<Board> boardList = boardService.articlesList();
+            List<Board> boardList = boardService.articlesList(boardName);
             m.addAttribute(boardList);
 
             return "board/welcome";
         }else {
             // 글 조회 부분 구현부
             int intBno = bno;
-            Board article = boardService.getArticle(intBno);
+            Board article = boardService.getArticle(boardName, intBno);
             m.addAttribute("article",article);
             return "board/welcomeArticle";
         }
@@ -57,7 +56,7 @@ public class BoardController {
         if(loginCheck(request)) {
             // board 정보에 작성자 id 삽입
             board.setWriter((String) session.getAttribute("id"));
-            boardService.writeArticle(board);
+            boardService.writeArticle(boardName, board);
             return "redirect:/board/welcome";
         }else {
             return "redirect:/";
