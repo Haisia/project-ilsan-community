@@ -3,7 +3,13 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cjh.projectilsancommunity.repository.mybatis.BoardMapper">
     <select id="articlesList" resultType="Board">
-        select * from board_welcome
+        select *
+        from board_welcome
+    </select>
+
+    <select id="getArticle" resultType="Board">
+        select *
+        from board_welcome where bno=${bno}
     </select>
 
 </mapper>

@@ -14,7 +14,4 @@ public interface BoardMapper {
     void writeArticle(Board board);         // 글 작성
     void modifyArticle(Board board);        // 글 수정
     void removeArticle(int bno);            // 글 삭제
-
-
-
 }
