@@ -19,13 +19,13 @@
 <!--</div>-->
 
 
-<form action="" id="form" style="margin: 0 200px">
+<form action="/board/welcome/write" id="form" method="post" style="margin: 0 200px">
     <div style="background-color: dodgerblue; height: 2px; margin: 0"></div>
     <div style="background-color: grey; height: 1px; margin: 0"></div>
     <input type="text" name="title" style="margin:10px 0;width: 70%; height: 30px; font-size: 20px"><br>
-    <textarea name="content" id="" cols="30" rows="40" style="margin:10px 0;width: 100%; font-size: 20px"></textarea>
+    <textarea name="content" id="content" cols="30" rows="40" style="margin:10px 0;width: 100%; font-size: 20px"></textarea>
     <div style="text-align: right;">
-        <button type="button" id="listBtn" class="btn"
+        <button type="button" id="listBtn" class="btn" onclick="location.href='.'"
                 style="
                 width: 60px;
                 height: 40px;
@@ -34,7 +34,7 @@
                 font-size: 15px;
                 color: white">취소
         </button>
-        <button type="button" id="writeBtn" class="btn"
+        <button type="submit" id="writeBtn" class="btn"
                 style="
                 width: 60px;
                 height: 40px;

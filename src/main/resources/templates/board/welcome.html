@@ -51,7 +51,7 @@
         <tr th:each="board:${boardList}">
             <td><span th:text="${board.getBno}"></span></td>
             <td style="text-align: left">
-                <a style="text-decoration-line: none" th:href="@{welcome(bno=${board.getBno})}">
+                <a style="text-decoration-line: none" th:href="@{/board/welcome(bno=${board.getBno})}">
                     <span th:text="${board.getTitle()}+' ['+${board.getCommentCnt}+']'" ></span>
                 </a>
             </td>
@@ -63,7 +63,7 @@
 
 <!--글쓰기 버튼-->
 <div style="text-align: right;margin: 0 100px;">
-    <button type="button" id="writeBtn" class="btn" onclick="location.href='./welcome/write'"
+    <button th:if="${session.id!=null}" type="button" id="writeBtn" class="btn" onclick="location.href='/board/welcome/write'"
             style="
             background-color: darkblue;
             font-weight: bold;

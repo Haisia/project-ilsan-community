@@ -26,9 +26,16 @@ public class BoardRepository {
         return boardMapper.getArticle(bno);
     }
 
+    public void writeArticle(Board board){
+        System.out.println("board.toString() = " + board.toString());
+        boardMapper.writeArticle(board);
+    }
+
     // bno 를 매개로 특정게시글의 조회수 (view_cnt) 를 1 증가 시킵니다.
     public int increaseViewCnt(int bno){
         return boardMapper.increaseViewCnt(bno);
     }
+
+
 
 }
