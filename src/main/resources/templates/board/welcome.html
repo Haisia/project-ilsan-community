@@ -2,21 +2,10 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>가입인사 게시판</title>
 
 
     <style>
-        #myInput {
-            background-image: url('/css/searchicon.png'); /* Add a search icon to input */
-            background-position: 10px 12px; /* Position the search icon */
-            background-repeat: no-repeat; /* Do not repeat the icon image */
-            width: 100%; /* Full-width */
-            font-size: 16px; /* Increase font-size */
-            padding: 12px 20px 12px 40px; /* Add some padding */
-            border: 1px solid #ddd; /* Add a grey border */
-            margin-bottom: 12px; /* Add some space below the input */
-        }
-
         #myTable {
             border-collapse: collapse; /* Collapse borders */
             width: 100%; /* Full-width */
@@ -25,7 +14,7 @@
         }
 
         #myTable th, #myTable td {
-            text-align: left; /* Left-align text */
+            text-align: center; /* Left-align text */
             padding: 12px; /* Add padding */
         }
 
@@ -38,54 +27,39 @@
             /* Add a grey background color to the table header and on hover */
             background-color: #f1f1f1;
         }
+
+        div {
+            margin: 10px 100px;
+        }
     </style>
 
-    <script>
-        function myFunction() {
-            // Declare variables
-            var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById("myInput");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("myTable");
-            tr = table.getElementsByTagName("tr");
-
-            // Loop through all table rows, and hide those who don't match the search query
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[0];
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
-        }
-    </script>
 </head>
 <body>
 <a href="/">홈으로</a><br>
-<h2>가입인사 게시판</h2>
+<h2 style="margin: 0 100px">가입인사 게시판</h2>
 
-<!--<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">-->
+<div>
+    <table id="myTable">
+        <tr class="header">
+            <th style="width:8%;">번호</th>
+            <th style="width:64%;">제목</th>
+            <th style="width:20%;">작성자</th>
+            <th style="width:8%;">조회수</th>
+        </tr>
 
-<table id="myTable">
-    <tr class="header">
-        <th style="width:10%;">번호</th>
-        <th style="width:60%;">제목</th>
-        <th style="width:20%;">작성자</th>
-        <th style="width:10%;">조회수</th>
-    </tr>
 
-    <tr th:each="board:${boardList}">
-        <td><span th:text="${board.getBno}"></span></td>
-        <td><span th:text="${board.getTitle()}"></span></td>
-        <td><span th:text="${board.getWriter()}"></span></td>
-        <td><span th:text="${board.getView_cnt()}"></span></td>
-    </tr>
-
-</table>
+        <tr th:each="board:${boardList}">
+            <td><span th:text="${board.getBno}"></span></td>
+            <td style="text-align: left">
+                <a style="text-decoration-line: none" th:href="@{welcome(bno=${board.getBno})}">
+                    <span th:text="${board.getTitle()}+' ['+${board.getComment_cnt}+']'" ></span>
+                </a>
+            </td>
+            <td><span th:text="${board.getWriter()}"></span></td>
+            <td><span th:text="${board.getView_cnt()}"></span></td>
+        </tr>
+    </table>
+</div>
 
 
 </body>
