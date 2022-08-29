@@ -52,14 +52,25 @@
             <td><span th:text="${board.getBno}"></span></td>
             <td style="text-align: left">
                 <a style="text-decoration-line: none" th:href="@{welcome(bno=${board.getBno})}">
-                    <span th:text="${board.getTitle()}+' ['+${board.getComment_cnt}+']'" ></span>
+                    <span th:text="${board.getTitle()}+' ['+${board.getCommentCnt}+']'" ></span>
                 </a>
             </td>
             <td><span th:text="${board.getWriter()}"></span></td>
-            <td><span th:text="${board.getView_cnt()}"></span></td>
+            <td><span th:text="${board.getViewCnt()}"></span></td>
         </tr>
     </table>
 </div>
+
+<form action="" id="form" method="get" style="text-align: right;margin: 0 100px;">
+    <button type="button" id="writeBtn" class="btn"
+            style="
+            background-color: darkblue;
+            font-weight: bold;
+            height: 40px;
+            width: 70px;
+            font-size: 15px;
+            color: white">글쓰기</button>
+</form>
 
 
 </body>

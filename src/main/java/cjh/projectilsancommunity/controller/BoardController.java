@@ -24,6 +24,7 @@ public class BoardController {
         if(bno==null) {
             List<Board> boardList = boardService.articlesList();
             m.addAttribute(boardList);
+
             return "board/welcome";
         }else {
             // 글 조회 부분 구현부

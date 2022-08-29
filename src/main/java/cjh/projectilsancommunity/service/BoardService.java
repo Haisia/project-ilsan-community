@@ -24,6 +24,7 @@ public class BoardService {
         Optional<Board> optionalArticle = boardRepository.getArticle(bno);
         if (optionalArticle.isPresent()) {
             Board article = optionalArticle.get();
+            boardRepository.increaseViewCnt(bno);
             return article;
         } else {
             return null;

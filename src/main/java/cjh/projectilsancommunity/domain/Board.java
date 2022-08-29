@@ -9,9 +9,9 @@ public class Board {
     private String title;
     private String content;
     private String writer;
-    private int view_cnt;
-    private int comment_cnt;
-    private Date reg_date;
+    private Integer viewCnt;
+    private Integer commentCnt;
+    private Date writeDate;
 
     public Integer getBno() {
         return bno;
@@ -45,28 +45,28 @@ public class Board {
         this.writer = writer;
     }
 
-    public int getView_cnt() {
-        return view_cnt;
+    public Integer getViewCnt() {
+        return viewCnt;
     }
 
-    public void setView_cnt(int view_cnt) {
-        this.view_cnt = view_cnt;
+    public void setViewCnt(Integer viewCnt) {
+        this.viewCnt = viewCnt;
     }
 
-    public int getComment_cnt() {
-        return comment_cnt;
+    public Integer getCommentCnt() {
+        return commentCnt;
     }
 
-    public void setComment_cnt(int comment_cnt) {
-        this.comment_cnt = comment_cnt;
+    public void setCommentCnt(Integer commentCnt) {
+        this.commentCnt = commentCnt;
     }
 
-    public Date getReg_date() {
-        return reg_date;
+    public Date getWriteDate() {
+        return writeDate;
     }
 
-    public void setReg_date(Date reg_date) {
-        this.reg_date = reg_date;
+    public void setWriteDate(Date writeDate) {
+        this.writeDate = writeDate;
     }
 
     @Override
@@ -76,9 +76,9 @@ public class Board {
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", writer='" + writer + '\'' +
-                ", view_cnt=" + view_cnt +
-                ", comment_cnt=" + comment_cnt +
-                ", reg_date=" + reg_date +
+                ", viewCnt=" + viewCnt +
+                ", commentCnt=" + commentCnt +
+                ", writeDate=" + writeDate +
                 '}';
     }
 
