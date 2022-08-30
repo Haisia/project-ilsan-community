@@ -20,6 +20,19 @@
     <span style="background-color: #f1f1f1;" th:text="${article.getContent}"></span>
 </div>
 
+<!--글수정 버튼-->
+<div style="text-align: right;margin: 5px 200px;">
+    <button th:if="${session.id==article.getWriter()}" type="button" id="writeBtn" class="btn"
+            th:onclick="|location.href='@{/board/welcome/article/{bno}(bno = ${article.getBno})}'|"
+            style="
+            background-color: grey;
+            font-weight: bold;
+            height: 40px;
+            width: 70px;
+            font-size: 15px;
+            color: white">수정</button>
+</div>
+
 
 </body>
 </html>

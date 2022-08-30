@@ -5,10 +5,7 @@ import cjh.projectilsancommunity.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -38,10 +35,8 @@ public class WelcomeBoardController {
         return "board/welcomeArticle";
     }
 
-
-
     // 로그인 확인 후, 게시글 작성 폼 페이지 매핑
-    @GetMapping("/board/welcome/write")
+    @GetMapping("/board/welcome/article")
     public String boardWelcomeWriteForm(HttpServletRequest request){
         HttpSession session = request.getSession();
         if(loginCheck(request)) {
@@ -52,7 +47,7 @@ public class WelcomeBoardController {
     }
 
     // 로그인 확인 후, 게시글 작성
-    @PostMapping("/board/welcome/write")
+    @PostMapping("/board/welcome/article")
     public String boardWelcomeWrite(HttpServletRequest request, @ModelAttribute Board board){
         HttpSession session = request.getSession();
         if(loginCheck(request)) {
@@ -65,7 +60,26 @@ public class WelcomeBoardController {
         }
     }
 
+    // 로그인 확인 후, 게시글 수정 폼으로 이동
+    @GetMapping("/board/welcome/article/{bno}")
+    public String boardWelcomeModifyForm(Model m, @PathVariable("bno") int bno){
+        Board article = boardService.getArticle(boardName, bno);
+        m.addAttribute("article",article);
 
+        return "board/welcomeModify";
+    }
+//
+//    // 로그인 확인 후, 게시글 수정
+//    @PutMapping("/board/welcome/{bno}")
+//    public String boardWelcomeModify(Model m, @PathVariable("bno") int bno){
+//        return "index";
+//    }
+//
+//    // 로그인 확인 후, 게시글 삭제
+//    @DeleteMapping ("/board/welcome/{bno}")
+//    public String boardWelcomeDelete(Model m, @PathVariable("bno") int bno){
+//        return "index";
+//    }
 
     private boolean loginCheck(HttpServletRequest request) {
         HttpSession session = request.getSession();

@@ -2,13 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>가입인사 게시판 - 글쓰기</title>
+    <title>가입인사 게시판 - 수정</title>
 </head>
 <body>
-<h2 style="margin: 20px 200px">가입인사 게시판</h2>
+<h2 style="margin: 20px 200px">가입인사 게시판 - 수정</h2>
 
 
-<form action="/board/welcome/article" id="form" method="post" style="margin: 0 200px">
+<!--<form action="/board/welcome/article" id="form" method="post" style="margin: 0 200px">-->
+<form th:action="@{/board/welcome/article/{bno}(bno = ${article.getBno})}" id="form" method="post" style="margin: 0 200px">
+    <input type="hidden" name="_method" value="PUT"/>
     <div style="background-color: dodgerblue; height: 2px; margin: 0"></div>
     <div style="background-color: grey; height: 1px; margin: 0"></div>
     <input type="text" name="title" style="margin:10px 0;width: 70%; height: 30px; font-size: 20px"><br>
