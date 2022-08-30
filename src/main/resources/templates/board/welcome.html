@@ -51,7 +51,7 @@
         <tr th:each="board:${boardList}">
             <td><span th:text="${board.getBno}"></span></td>
             <td style="text-align: left">
-                <a style="text-decoration-line: none" th:href="@{/board/welcome(bno=${board.getBno})}">
+                <a style="text-decoration-line: none" th:href="@{/board/welcome/{bno}(bno = ${board.getBno})}">
                     <span th:text="${board.getTitle()}+' ['+${board.getCommentCnt}+']'" ></span>
                 </a>
             </td>

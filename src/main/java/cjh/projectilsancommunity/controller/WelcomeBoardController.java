@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-public class welcomeBoardController {
+public class WelcomeBoardController {
 
 //    private final BoardRepository boardRepository;
     private final BoardService boardService;
@@ -23,20 +24,21 @@ public class welcomeBoardController {
 
     // 가입인사 게시판, 게시글 읽기 매핑
     @GetMapping("/board/welcome")
-    public String boardWelcome(Model m, Integer bno){
-        if(bno==null) {
+    public String boardWelcome(Model m){
             List<Board> boardList = boardService.articlesList(boardName);
             m.addAttribute(boardList);
-
             return "board/welcome";
-        }else {
-            // 글 조회 부분 구현부
-            int intBno = bno;
-            Board article = boardService.getArticle(boardName, intBno);
-            m.addAttribute("article",article);
-            return "board/welcomeArticle";
-        }
     }
+
+    // 게시글 단일 조회
+    @GetMapping("/board/welcome/{bno}")
+    public String boardWelcomeView(Model m, @PathVariable("bno") int bno){
+        Board article = boardService.getArticle(boardName, bno);
+        m.addAttribute("article",article);
+        return "board/welcomeArticle";
+    }
+
+
 
     // 로그인 확인 후, 게시글 작성 폼 페이지 매핑
     @GetMapping("/board/welcome/write")
