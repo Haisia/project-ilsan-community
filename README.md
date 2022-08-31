@@ -24,6 +24,8 @@
 - 게시판 글 삭제 (2022-08-31)
 ![2](https://user-images.githubusercontent.com/110602188/187584969-23d07e7d-3fae-413f-8392-05c1a7900bfc.gif)
 
+- 게시판 페이징 구현 (2022-08-31)
+![페이징](https://user-images.githubusercontent.com/110602188/187614883-20d07745-cc5b-40e4-91a7-4a4cbde48235.gif)
 
 
 
