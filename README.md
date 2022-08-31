@@ -15,6 +15,7 @@
 ![로그인](https://user-images.githubusercontent.com/110602188/187585852-4ad4ccec-0b5b-40c8-accc-a68df8025217.gif)
 
 - 게시판 글 작성 (2022-08-29)
+
 ![1](https://user-images.githubusercontent.com/110602188/187584959-8da49bc4-439b-4ff6-8e7f-4288dab1fe77.gif)
 
 - 게시판 글 수정 (2022-08-31)
