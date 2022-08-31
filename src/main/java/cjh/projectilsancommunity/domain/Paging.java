@@ -3,12 +3,13 @@ package cjh.projectilsancommunity.domain;
 public class Paging {
     private final int pageSize = 15;
     private final int articlePerPage = 10;
+    private final int max;
+
 
     private int pageNow=1;
     private int pageLeft = 1;
     private int pageRight = 15;
 
-    private int max=1;
 
     public int getPageNow() {
         return pageNow;

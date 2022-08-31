@@ -52,7 +52,7 @@
             <td><span th:text="${board.getBno}"></span></td>
             <td style="text-align: left">
                 <a style="text-decoration-line: none" th:href="@{/board/welcome/{bno}(bno = ${board.getBno})}">
-                    <span th:text="${board.getTitle()}+' ['+${board.getCommentCnt}+']'" ></span>
+                    <span th:text="${board.getTitle()}+' ['+${board.getCommentCnt}+']'"></span>
                 </a>
             </td>
             <td><span th:text="${board.getWriter()}"></span></td>
@@ -61,16 +61,53 @@
     </table>
 </div>
 
-<!--글쓰기 버튼-->
-<div style="text-align: right;margin: 0 100px;">
-    <button th:if="${session.id!=null}" type="button" id="writeBtn" class="btn" onclick="location.href='/board/welcome/article'"
-            style="
+<!--<div th:each="m : ${#numbers.sequence(left,right)(left=${paging.getLeft()}, right=${paging.getRight()})}">-->
+<div>
+
+    <!--글쓰기 버튼-->
+    <div style="text-align: right;margin: 0 100px;">
+        <button th:if="${session.id!=null}" type="button" id="writeBtn" class="btn"
+                onclick="location.href='/board/welcome/article'"
+                style="
             background-color: darkblue;
             font-weight: bold;
             height: 40px;
             width: 70px;
             font-size: 15px;
-            color: white">글쓰기</button>
+            color: white">글쓰기
+        </button>
+    </div>
+
+    <div style="margin: 10px 200px">
+            <!--처음 페이지로 이동-->
+        <span>
+        <a th:if="${paging.getPageNow()}>${paging.getPageSize()}" th:href="@{/board/welcome?page=1}"><<</a>
+        </span>
+            <!--pageSize 만큼 이전으로 이동-->
+        <span>
+        <a th:if="${paging.getPageNow()}>${paging.getPageSize()}" th:href="@{/board/welcome?page={page}(page=${paging.getPageNow()}-${paging.getPageSize()})}"> < </a>
+        </span>
+
+            <!--페이지 번호 출력-->
+        <span th:each="page:${#numbers.sequence(paging.getPageLeft(),paging.getPageRight())}" >
+            <span>
+            <a th:if="${page}<=${paging.getMax()} and ${page}!=${paging.getPageNow()}" th:href="@{/board/welcome?page={page}(page=${page})}" th:text="${page}+' '"></a>
+            </span>
+            <span>
+            <a th:if="${page}<=${paging.getMax()} and ${page}==${paging.getPageNow()}" th:href="@{/board/welcome?page={page}(page=${page})}" th:text="${page}+' '" style="font-size: 20px"></a>
+            </span>
+        </span>
+
+            <!--pageSize 만큼 다음으로 이동-->
+        <span>
+        <a th:if="${paging.getPageLeft()}+${paging.getPageSize()}<${paging.getMax()}" th:href="@{/board/welcome?page={page}(page=${paging.getPageNow()}+${paging.getPageSize()})}"> > </a>
+        </span>
+
+            <!--가장 마지막 페이지로 이동-->
+        <span>
+        <a th:if="${paging.getPageLeft()}+${paging.getPageSize()}<${paging.getMax()}" th:href="@{/board/welcome?page={page}(page=${paging.getMax()})}">>></a>
+        </span>
+    </div>
 </div>
 
 
