@@ -26,4 +26,8 @@
         update ${boardName} set title=#{board.title}, content=#{board.content} where bno=#{board.bno}
     </update>
 
+    <delete id="removeArticle">
+        delete from ${boardName} where bno=#{bno}
+    </delete>
+
 </mapper>

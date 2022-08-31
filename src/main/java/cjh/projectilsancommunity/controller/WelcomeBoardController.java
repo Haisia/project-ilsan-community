@@ -96,6 +96,19 @@ public class WelcomeBoardController {
         }
     }
 
+    @DeleteMapping("/board/welcome/article/{bno}")
+    public String boardWelcomeDelete(Model m, @PathVariable("bno") int bno, HttpServletRequest request, @ModelAttribute Board newArticle){
+        HttpSession session = request.getSession();
+        Board article = boardService.getArticle(boardName, bno);
+
+        if(authCheck(session, article.getWriter())) {
+            boardService.removeArticle(boardName, bno);
+            return "redirect:/board/welcome";
+        }else{
+            return "redirect:/";
+        }
+    }
+
 //    @PostMapping("/board/welcome/article/{bno}")
 //    public String test(@PathVariable("bno") int bno){
 //        System.out.println("test 호출");

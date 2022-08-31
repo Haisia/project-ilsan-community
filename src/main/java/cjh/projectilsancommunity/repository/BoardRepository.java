@@ -30,13 +30,16 @@ public class BoardRepository {
         boardMapper.writeArticle(boardName, board);
     }
 
+    public void modifyArticle(String boardName, @Param("board") Board board){
+        boardMapper.modifyArticle(boardName, board);
+    }
+
+    public void removeArticle(String boardName, int bno){
+        boardMapper.removeArticle(boardName, bno);
+    }
+
     // bno 를 매개로 특정게시글의 조회수 (view_cnt) 를 1 증가 시킵니다.
     public int increaseViewCnt(String boardName, int bno){
         return boardMapper.increaseViewCnt(boardName, bno);
     }
-
-    public void modifyArticle(@Param("boardName") String boardName, @Param("board") Board board){
-        boardMapper.modifyArticle(boardName, board);
-    }
-
 }

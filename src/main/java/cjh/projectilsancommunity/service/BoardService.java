@@ -40,5 +40,10 @@ public class BoardService {
     public void modifyArticle(String boardName, Board board){
         boardRepository.modifyArticle(boardName, board);
     }
+
+    public void removeArticle(String boardName, int bno){
+        boardRepository.removeArticle(boardName, bno);
+    }
+
 }
 

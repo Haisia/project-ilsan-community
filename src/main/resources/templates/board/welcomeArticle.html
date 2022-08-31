@@ -35,14 +35,13 @@
         </button>
         <input type="hidden" name="_method" value="delete"/>
         <button th:if="${session.id==article.getWriter()}" type="submit" id="deleteBtn" class="btn"
-                style="
+            style="
             background-color: grey;
             font-weight: bold;
             height: 40px;
             width: 70px;
             font-size: 15px;
-            color: white">
-            삭제
+            color: white">삭제
         </button>
     </form>
 </div>
