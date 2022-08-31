@@ -36,5 +36,9 @@ public class BoardService {
     public void writeArticle(String boardName, Board board){
         boardRepository.writeArticle(boardName, board);
     }
+
+    public void modifyArticle(String boardName, Board board){
+        boardRepository.modifyArticle(boardName, board);
+    }
 }
 

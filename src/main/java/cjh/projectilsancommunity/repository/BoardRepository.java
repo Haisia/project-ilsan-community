@@ -3,6 +3,7 @@ package cjh.projectilsancommunity.repository;
 import cjh.projectilsancommunity.domain.Board;
 import cjh.projectilsancommunity.repository.mybatis.BoardMapper;
 import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -34,6 +35,8 @@ public class BoardRepository {
         return boardMapper.increaseViewCnt(boardName, bno);
     }
 
-
+    public void modifyArticle(@Param("boardName") String boardName, @Param("board") Board board){
+        boardMapper.modifyArticle(boardName, board);
+    }
 
 }

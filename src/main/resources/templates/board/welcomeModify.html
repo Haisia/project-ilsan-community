@@ -10,11 +10,12 @@
 
 <!--<form action="/board/welcome/article" id="form" method="post" style="margin: 0 200px">-->
 <form th:action="@{/board/welcome/article/{bno}(bno = ${article.getBno})}" id="form" method="post" style="margin: 0 200px">
-    <input type="hidden" name="_method" value="PUT"/>
+    <input type="hidden" name="_method" value="put"/>
     <div style="background-color: dodgerblue; height: 2px; margin: 0"></div>
     <div style="background-color: grey; height: 1px; margin: 0"></div>
-    <input type="text" name="title" style="margin:10px 0;width: 70%; height: 30px; font-size: 20px"><br>
-    <textarea name="content" id="content" cols="30" rows="40" style="margin:10px 0;width: 100%; font-size: 20px"></textarea>
+    <input type="text" name="title" th:value="${article.getTitle()}" style="margin:10px 0;width: 70%; height: 30px; font-size: 20px"><br>
+    <textarea name="content" id="content" cols="30" rows="40" th:value="${article.getContent()}" th:text="${article.getContent()}" style="margin:10px 0;width: 100%; font-size: 20px">
+    </textarea>
     <div style="text-align: right;">
         <button type="button" id="listBtn" class="btn" onclick="location.href='.'"
                 style="

@@ -22,4 +22,8 @@
         values (#{board.title},#{board.content},#{board.writer},now())
     </insert>
 
+    <update id="modifyArticle">
+        update ${boardName} set title=#{board.title}, content=#{board.content} where bno=#{board.bno}
+    </update>
+
 </mapper>
