@@ -22,17 +22,30 @@
 
 <!--글수정 버튼-->
 <div style="text-align: right;margin: 5px 200px;">
-    <button th:if="${session.id==article.getWriter()}" type="button" id="writeBtn" class="btn"
-            th:onclick="|location.href='@{/board/welcome/article/{bno}(bno = ${article.getBno})}'|"
-            style="
+    <form th:action="@{/board/welcome/article/{bno}(bno = ${article.getBno})}" method="post" id="delete">
+        <button th:if="${session.id==article.getWriter()}" type="button" id="writeBtn" class="btn"
+                th:onclick="|location.href='@{/board/welcome/article/{bno}(bno = ${article.getBno})}'|"
+                style="
             background-color: grey;
             font-weight: bold;
             height: 40px;
             width: 70px;
             font-size: 15px;
-            color: white">수정</button>
+            color: white">수정
+        </button>
+        <input type="hidden" name="_method" value="delete"/>
+        <button th:if="${session.id==article.getWriter()}" type="submit" id="deleteBtn" class="btn"
+                style="
+            background-color: grey;
+            font-weight: bold;
+            height: 40px;
+            width: 70px;
+            font-size: 15px;
+            color: white">
+            삭제
+        </button>
+    </form>
 </div>
-
 
 </body>
 </html>
