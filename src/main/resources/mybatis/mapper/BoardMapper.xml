@@ -6,28 +6,40 @@
     <select id="articlesList" resultType="Board">
         select *
         from ${boardName}
+        <if test="limit1 != null and limit2 != null">
+            order by bno desc limit ${limit1}, ${limit2};
+        </if>
     </select>
+
 
     <select id="getArticle" resultType="Board">
         select *
-        from ${boardName} where bno=${bno}
+        from ${boardName}
+        where bno = ${bno}
     </select>
 
     <update id="increaseViewCnt">
-        update ${boardName} set view_cnt=view_cnt+1 where bno=${bno}
+        update ${boardName}
+        set view_cnt=view_cnt + 1
+        where bno = ${bno}
     </update>
 
     <insert id="writeArticle">
         insert into ${boardName} (title, content, writer, write_date)
-        values (#{board.title},#{board.content},#{board.writer},now())
+        values (#{board.title}, #{board.content}, #{board.writer}, now())
     </insert>
 
     <update id="modifyArticle">
-        update ${boardName} set title=#{board.title}, content=#{board.content} where bno=#{board.bno}
+        update ${boardName}
+        set title=#{board.title},
+            content=#{board.content}
+        where bno = #{board.bno}
     </update>
 
     <delete id="removeArticle">
-        delete from ${boardName} where bno=#{bno}
+        delete
+        from ${boardName}
+        where bno = #{bno}
     </delete>
 
 </mapper>

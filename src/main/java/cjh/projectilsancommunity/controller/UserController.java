@@ -35,23 +35,26 @@ public class UserController {
     @PostMapping("/user/signup")
     public String userSignUp(@ModelAttribute User user) {
         if (userService.saveUser(user))
-            return "redirect:/userSignUpSuccess";   // 회원가입 성공 페이지
+            return "redirect:/";   // 회원가입 성공 페이지
         else {
-            return "redirect:/userSignUpFail";    // 회원가입 실패 페이지
+            return "redirect:/";    // 회원가입 실패 페이지
         }
     }
 
-    // 회원가입 성공 페이지
-    @GetMapping("/userSignUpSuccess")
-    public String userSignUpSuccess() {
-        return "userSignUpSuccess";
-    }
+//    // 회원가입 성공 페이지
+//    @GetMapping("/userSignUpSuccess")
+//    public String userSignUpSuccess() {
+//        return "userSignUpSuccess";
+//    }
+//
+//    // 회원가입 실패 페이지
+//    @GetMapping("/userSignUpFail")
+//    public String userSignUpFail() {
+//        return "userSignUpFail";
+//    }
 
-    // 회원가입 실패 페이지
-    @GetMapping("/userSignUpFail")
-    public String userSignUpFail() {
-        return "userSignUpFail";
-    }
+
+
 
     // 로그인 페이지로 이동
     @GetMapping("/login")

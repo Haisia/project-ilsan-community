@@ -17,9 +17,14 @@ public class BoardRepository {
     private final BoardMapper boardMapper;
 
 
-    public List<Board> articlesList(String boardName){
-        return boardMapper.articlesList(boardName);
+//    public List<Board> articlesList(String boardName){
+//        return boardMapper.articlesList(boardName);
+//    }
+
+    public List<Board> articlesList(String boardName, Integer limit1, Integer limit2){
+        return boardMapper.articlesList(boardName, limit1, limit2);
     }
+
 
     // bno 로 특정 게시글을 조회합니다.
     public Optional<Board> getArticle(String boardName, int bno){

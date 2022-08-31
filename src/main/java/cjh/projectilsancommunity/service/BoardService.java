@@ -17,8 +17,16 @@ public class BoardService {
 
     // BoardRepository 에서 모든 글 목록 조회
     public List<Board> articlesList(String boardName){
-        return boardRepository.articlesList(boardName);
+        return boardRepository.articlesList(boardName, null, null);
     }
+
+
+    // limit1 에서부터 limit2 개 만큼만 조회
+    public List<Board> articlesList(String boardName, int limit1, int limit2){
+        return boardRepository.articlesList(boardName, limit1, limit2);
+    }
+
+
 
     // BoardRepository 에서 bno를 매개로 특정 글 조회
     public Board getArticle(String boardName, int bno){
@@ -44,6 +52,8 @@ public class BoardService {
     public void removeArticle(String boardName, int bno){
         boardRepository.removeArticle(boardName, bno);
     }
+
+
 
 }
 

@@ -1,6 +1,7 @@
 package cjh.projectilsancommunity.controller;
 
 import cjh.projectilsancommunity.domain.Board;
+import cjh.projectilsancommunity.domain.Paging;
 import cjh.projectilsancommunity.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -19,11 +20,20 @@ public class WelcomeBoardController {
     private final BoardService boardService;
     private String boardName = "board_welcome";
 
+
     // 가입인사 게시판, 게시글 읽기 매핑
     @GetMapping("/board/welcome")
-    public String boardWelcome(Model m){
-            List<Board> boardList = boardService.articlesList(boardName);
-            m.addAttribute(boardList);
+    public String boardWelcome(Model m, Integer page){
+        if(page==null){
+            return "redirect:/board/welcome?page=1";
+        }
+        List<Board> boardList = boardService.articlesList(boardName);
+        Paging paging = new Paging(boardList.size());
+
+        boardList = boardService.articlesList(boardName, paging.getLimit1(page), paging.getLimit2());
+
+        m.addAttribute(boardList);
+        m.addAttribute(paging);
             return "board/welcome";
     }
 
@@ -74,8 +84,6 @@ public class WelcomeBoardController {
         }
     }
 
-
-
     // 로그인 확인 후, 게시글 수정
     @PutMapping("/board/welcome/article/{bno}")
     public String boardWelcomeModify(Model m, @PathVariable("bno") int bno, HttpServletRequest request, @ModelAttribute Board newArticle){
@@ -87,7 +95,6 @@ public class WelcomeBoardController {
             newArticle.setWriter(article.getWriter());
 
             System.out.println("newArticle.toString() = " + newArticle.toString());
-//            boardService.writeArticle(boardName, newArticle);
             boardService.modifyArticle(boardName, newArticle);
 
             return "redirect:/board/welcome";
@@ -108,21 +115,6 @@ public class WelcomeBoardController {
             return "redirect:/";
         }
     }
-
-//    @PostMapping("/board/welcome/article/{bno}")
-//    public String test(@PathVariable("bno") int bno){
-//        System.out.println("test 호출");
-//
-//        return "redirect:/";
-//    }
-
-
-//
-//    // 로그인 확인 후, 게시글 삭제
-//    @DeleteMapping ("/board/welcome/{bno}")
-//    public String boardWelcomeDelete(Model m, @PathVariable("bno") int bno){
-//        return "index";
-//    }
 
     // 인자로 받은 id가 로그인되어 있는 유저의 id와 일치여부 반환
     private static boolean authCheck(HttpSession session, String id) {
