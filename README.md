@@ -9,13 +9,22 @@
 
 기능
 - 회원가입 (2022-08-27)
-- 로그인 & 로그아웃 (2022-08-28)
-- 게시판 글 작성 (2022-08-29)
-- 게시판 글 수정 (2022-08-31)
-- 게시판 글 삭제 (2022-08-31)
-
-![1](https://user-images.githubusercontent.com/110602188/187584959-8da49bc4-439b-4ff6-8e7f-4288dab1fe77.gif)
-![1](https://user-images.githubusercontent.com/110602188/187584968-2349fa39-6036-43e8-82f8-fb406906e825.gif)
-![2](https://user-images.githubusercontent.com/110602188/187584969-23d07e7d-3fae-413f-8392-05c1a7900bfc.gif)
 ![회원가입](https://user-images.githubusercontent.com/110602188/187585848-1faecb0e-6914-4f99-8175-430276b974f5.gif)
+
+- 로그인 & 로그아웃 (2022-08-28)
 ![로그인](https://user-images.githubusercontent.com/110602188/187585852-4ad4ccec-0b5b-40c8-accc-a68df8025217.gif)
+
+- 게시판 글 작성 (2022-08-29)
+![1](https://user-images.githubusercontent.com/110602188/187584959-8da49bc4-439b-4ff6-8e7f-4288dab1fe77.gif)
+
+- 게시판 글 수정 (2022-08-31)
+![1](https://user-images.githubusercontent.com/110602188/187584968-2349fa39-6036-43e8-82f8-fb406906e825.gif)
+
+- 게시판 글 삭제 (2022-08-31)
+![2](https://user-images.githubusercontent.com/110602188/187584969-23d07e7d-3fae-413f-8392-05c1a7900bfc.gif)
+
+
+
+
+
+
