@@ -26,6 +26,10 @@ public class BoardService {
         return boardRepository.articlesList(boardName, limit1, limit2);
     }
 
+    public int articlesListSize(String boardName){
+        return boardRepository.articlesListSize(boardName);
+    }
+
 
 
     // BoardRepository 에서 bno를 매개로 특정 글 조회

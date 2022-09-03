@@ -27,10 +27,12 @@ public class WelcomeBoardController {
         if(page==null){
             return "redirect:/board/welcome?page=1";
         }
-        List<Board> boardList = boardService.articlesList(boardName);
-        Paging paging = new Paging(boardList.size());
+//        List<Board> boardList = boardService.articlesList(boardName);
 
-        boardList = boardService.articlesList(boardName, paging.getLimit1(page), paging.getLimit2());
+        int size = boardService.articlesListSize(boardName);
+        Paging paging = new Paging(size);
+
+        List<Board> boardList = boardService.articlesList(boardName, paging.getLimit1(page), paging.getLimit2());
 
         m.addAttribute(boardList);
         m.addAttribute(paging);
@@ -60,6 +62,17 @@ public class WelcomeBoardController {
     @PostMapping("/board/welcome/article")
     public String boardWelcomeWrite(HttpServletRequest request, @ModelAttribute Board board){
         HttpSession session = request.getSession();
+
+        for (int i = 0; i < 1000; i++) {
+            String str = "페이징 테스트 중 입니다. ";
+            str=str+i;
+            board.setTitle(str);
+            board.setWriter((String) session.getAttribute("id"));
+
+            boardService.writeArticle(boardName, board);
+        }
+
+
         if(loginCheck(request)) {
             // board 정보에 작성자 id 삽입
             board.setWriter((String) session.getAttribute("id"));

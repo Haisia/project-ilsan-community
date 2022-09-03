@@ -21,8 +21,14 @@ public class BoardRepository {
 //        return boardMapper.articlesList(boardName);
 //    }
 
+    //limit1 번째 row 부터 limit2 개의 row를 list로 가져 옴
     public List<Board> articlesList(String boardName, Integer limit1, Integer limit2){
         return boardMapper.articlesList(boardName, limit1, limit2);
+    }
+
+    //테이블의 데이터 수를 반환.
+    public int articlesListSize(String boardName){
+        return boardMapper.articlesListSize(boardName);
     }
 
 

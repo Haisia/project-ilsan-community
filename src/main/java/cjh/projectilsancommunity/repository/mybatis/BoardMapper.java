@@ -14,6 +14,8 @@ public interface BoardMapper {
     List<Board> articlesList(@Param("boardName") String boardName,
                              @Param("limit1")Integer limit1, @Param("limit2")Integer limit2);
 
+    int articlesListSize(String boardName);
+
     Optional<Board> getArticle(@Param("boardName") String boardName, @Param("bno") int bno);     // 글 1개 조회
     void writeArticle(@Param("boardName") String boardName, @Param("board") Board board);         // 글 작성
     void modifyArticle(@Param("boardName") String boardName, @Param("board") Board board);        // 글 수정

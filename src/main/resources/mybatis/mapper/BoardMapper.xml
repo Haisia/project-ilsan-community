@@ -12,6 +12,11 @@
     </select>
 
 
+    <select id="articlesListSize" resultType="int">
+        select count(*) from ${boardName};
+    </select>
+
+
     <select id="getArticle" resultType="Board">
         select *
         from ${boardName}
